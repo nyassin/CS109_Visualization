@@ -102,7 +102,7 @@ Indeed, weather delays accounted for only a small portion of delays, the largest
 This is likely due in part to the massive number of categorical predictors we have. While dummy variables can be effective in limited use, they are not particularly informative since they can only assume one of two values. It might have been better to do separate regressions for each airline/airport combination, but this would lose the predictive value that each airline and airport contributes to prediction.
 In an attempt to more accurately sample from the parameter space, we also constructed a markov chain monte carlo (MCMC) based on the Metropolis-Hastings algorithms to estimate the parameters of the logistic regression. Unfortunately, we didn’t have much time to debug and optimize this code, and when running test data that should have fit quite well, our chain failed to converge in a reasonable number of attempts.</p>
 
-<p><a>Logistic Regression</a></p>
+<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/LogR_dev.ipynb?create=1">Logistic Regression Code</a></p>
 
 <h2>
 <a name="multivariate-regression" class="anchor" href="#multivariate-regression"><span class="octicon octicon-link"></span></a>Multivariate Regression</h2>
