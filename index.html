@@ -61,7 +61,7 @@ A complete list of the fields that we chose to download is listed at the bottom 
 <h2>
 <a name="matching-flights-with-weather-data" class="anchor" href="#matching-flights-with-weather-data"><span class="octicon octicon-link"></span></a>Matching Flights with Weather Data</h2>
 
-<p>We’ve now aggregated 3.5 million flights for the year 2012 alone. However, both datasets were separate and combining the two locally to match each hour of weather to the corresponding flight departure times would take a sizable amount of time (17 hours in our estimation). We wrote a MapReduce job to scale our computation to Amazon EC2 instances. MrJob Input. </p>
+<p>We’ve now aggregated 3.5 million flights for the year 2012 alone. However, both datasets were separate and combining the two locally to match each hour of weather to the corresponding flight departure times would take a sizable amount of time (17 hours in our estimation). We wrote a MapReduce job to scale our computation to Amazon EC2 instances. </p>
 
 <p>After running 15 EC2 instances for approximately 20 minutes, we got a fully concatenated dataset, and with a little more cleaning, we arrived at our full dataset (maindata/fulldf.csv). Due to the unwieldly size of the dataset for analysis, we created a random subset 1/100th of the size (maindata/smalldf.csv).</p>
 
