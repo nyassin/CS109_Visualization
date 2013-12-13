@@ -39,31 +39,55 @@
         <ul></ul>
       </nav>
       <section>
-        <p>Our CS109 Project aims to better understand and be able to predict flight delays in 2012 in the United States.</p>
+        <p>Hello and welcome to our CS109 Process book!</p>
 
-<h2>
-<a name="flight-scraping" class="anchor" href="#flight-scraping"><span class="octicon octicon-link"></span></a>Flight Scraping</h2>
+<p>The goal of our project was to explore the world of flight delays and look at how weather factors in. Our original intention was to predict delays based upon weather at the origin airport. We gathered the flight data and matched it to scraped weather data at the origin airport. We then produced both significant visualizations of the the interplay of weather and flight delays and experimented with multiple regression and classification models.  The conclusion was that it is very difficult to predict flight delays. Airports now handle medium to bad weather well and a significant number of delays are due to chance or hard to follow network effects.
+We hope you enjoy browsing our project.</p>
 
-<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/flight_scraping.ipynb?create=1">Flight scraping code</a></p>
+<p>Ian Boothby, Daniel Broudy, Jamie Law-Smith, Nuseir Yassin. </p>
 
 <h2>
 <a name="weather-scraping" class="anchor" href="#weather-scraping"><span class="octicon octicon-link"></span></a>Weather Scraping</h2>
 
+<p>We obtained data from the National Oceanic and Atmospheric Administration, an arm of the National Climatic Data Center, which releases extremely detailed weather datasets for weather stations around the country. These were obtained from a combination of the ISD-Lite dataset, which includes hourly data, and the GSOD dataset, which includes daily statistics.
+Due to the quirky format that the NOAA uses for its data files, the process of collecting that data took extensive work and is well documented in our linked process book. </p>
+
 <p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/weather_scraping.ipynb?create=1">Weather Scraping code</a></p>
+
+<h2>
+<a name="flight-scraping" class="anchor" href="#flight-scraping"><span class="octicon octicon-link"></span></a>Flight Scraping</h2>
+
+<p>We obtained flight data from the Bureau of Transportation Statistics’ (BTS) <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&amp;DB_Short_Name=On-Time">On-Time Performance</a> dataset, which has extremely detailed information about the delays, causes of delay, route characteristics, etc. of every flight in every airport in the US. 
+For our purposes, this was an overwhelming amount of data, so we chose to focus on the top 20 busiest airports in the US. Given the spoke-and-hub strategy of most airlines, in which flights are routed through connecting hubs, these 20 airports represent a majority of the traffic in the US already, and are presumably also centers of delays, since one delay at a hub can spill over to all connecting flights.
+A complete list of the fields that we chose to download is listed at the bottom of the ipython notebook--these included causes of delay classified by the BTS here, airtime, day of the week, etc.</p>
+
+<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/flight_scraping.ipynb?create=1">Flight scraping code</a></p>
 
 <h2>
 <a name="matching-flights-with-weather-data" class="anchor" href="#matching-flights-with-weather-data"><span class="octicon octicon-link"></span></a>Matching Flights with Weather Data</h2>
 
-<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/dfcombiner_mrjob.py?create=1">MrJob Input</a></p>
+<p>We’ve now aggregated 3.5 million flights for the year 2012 alone. However, both datasets were separate and combining the two locally to match each hour of weather to the corresponding flight departure times would take a sizable amount of time (17 hours in our estimation). We wrote a MapReduce job to scale our computation to Amazon EC2 instances. MrJob Input. </p>
+
+<p>After running 15 EC2 instances for approximately 20 minutes, we got a fully concatenated dataset, and with a little more cleaning, we arrived at our full dataset (maindata/fulldf.csv). Due to the unwieldly size of the dataset for analysis, we created a random subset 1/100th of the size (maindata/smalldf.csv).</p>
+
+<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/dfcombiner_mrjob.py?create=1">MapReduce Code</a></p>
+
+<h2>
+<a name="sizing-up-the-data" class="anchor" href="#sizing-up-the-data"><span class="octicon octicon-link"></span></a>Sizing Up The Data</h2>
+
+<p>WAITING ON IT</p>
 
 <h2>
 <a name="visualizations" class="anchor" href="#visualizations"><span class="octicon octicon-link"></span></a>Visualizations</h2>
 
-<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/master/Flight_Visualization.ipynb?create=1">Flight Visualization - Data Collection</a></p>
+<p>To develop a better understanding of our scraped and combined data, we created two D3 visualizations. The first visualization is based on the CrossFilter library provided by Square. <a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/master/Flight_Visualization.ipynb?create=1">Flight Visualization - Data Collection</a></p>
 
-<p><a href="http://bl.ocks.org/nyassin/raw/7938379/">Flight Visualization Using Maps</a></p>
+<p>First, we re-created a special comma separated dataset  that has all the necessary information we need for the visualization (like Weather, Pressure, delay, etc). Flight Visualization - Data Collection. Then we tweaked the CrossFilter model and added our own filters. Most importantly, we generated an interactive pie chart, which we think is a better visualization than a simple bar chart.
+<a href="http://bl.ocks.org/nyassin/raw/7938499/">Flight Visualization Using CrossFilter</a></p>
 
-<p><a href="http://bl.ocks.org/nyassin/raw/7938499/">Flight Visualization Using CrossFilter</a></p>
+<p>We also wanted to take advantage of D3’s geoPath abilities. We plotted the 20 top airports on a US map and connected them with flight paths that resembled either flights or delays depending on the user toggle.<a href="http://bl.ocks.org/nyassin/raw/7938379/">Flight Visualization Using Maps</a></p>
+
+<p>Visualizations closely mirror our statistical analysis. Our findings are documented in their respective visualization files. </p>
 
 <h2>
 <a name="linear-regression" class="anchor" href="#linear-regression"><span class="octicon octicon-link"></span></a>Linear Regression</h2>
@@ -73,7 +97,7 @@
 <h2>
 <a name="logistical-regression" class="anchor" href="#logistical-regression"><span class="octicon octicon-link"></span></a>Logistical Regression</h2>
 
-<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/Logistic%20Regression.ipynb?create=1">Logistic Regression</a></p>
+<p><a>Logistic Regression</a></p>
 
 <h2>
 <a name="multivariate-regression" class="anchor" href="#multivariate-regression"><span class="octicon octicon-link"></span></a>Multivariate Regression</h2>
