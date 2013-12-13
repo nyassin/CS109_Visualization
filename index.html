@@ -110,12 +110,26 @@ In an attempt to more accurately sample from the parameter space, we also constr
 <p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/Multilevel%20Regression.ipynb?create=1">Multivariate Regression</a></p>
 
 <h2>
+<a name="svm-methods" class="anchor" href="#svm-methods"><span class="octicon octicon-link"></span></a>SVM Methods</h2>
+
+<p>We explored Support Vector Machines as another potential classifier in predicting delays. We found that SVM methods predicted far too few delays (on the order of 5 to 10) to be useful. We also tried the related Support Vector Regression in order to get predicted percentage chance of delays. Less than 1% of the predictions were above 0.5 of a flight being delayed, and since our goal in this project was to predict the binary delayed/not delayed, SVRs did not seem a useful avenue. Initial forays in RandomForests were more fruitful, and so we abandoned SVM methods in favor of RFs.</p>
+
+<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/SVM.ipynb?create=1">SVM Methods code</a></p>
+
+<h2>
 <a name="randomforest" class="anchor" href="#randomforest"><span class="octicon octicon-link"></span></a>RandomForest</h2>
 
 <p>This was our most successful classifier. We selected Random Forests in an effort to explore a methodology that was not covered in the problem sets of the course. In our efforts we found <a href="http://blog.yhathq.com/posts/random-forests-in-python.html">this blog</a> very helpful. We went through many iterations of feature lists and discovered new inputs that we decided to go back and scrape to add to our flight dataset. It is misleading to look at the score in predicting flight delays because delays are rare events. We used the metrics of precision and recall to examine our ability to distinguish the delayed flights from normal flights. 
 We had limited success in calibrating the model and producing a successful classifier. This is documented in our ipython notebook linked above.</p>
 
 <p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/RandomForest.ipynb?create=1">Random Forest Book</a></p>
+
+<h2>
+<a name="summary" class="anchor" href="#summary"><span class="octicon octicon-link"></span></a>Summary</h2>
+
+<p>In summary this project was much more ambitious than we realized at the time of our project proposal. Flight delays are not as influenced by weather as we expected and most other delays are caused by rare events like mechanical failure or network-dependent events like late aircraft delay. We have now wrestled with and realized just how hard it is to work with a real world problem. Scraping and cleaning the data took a significant amount of time. </p>
+
+<p>Part of our rationale for trying several different models was because, unlike on problem sets, the initial models we tried were quite poor. In retrospect we wish that we pursued an individual method in more depth and in a more rigorous manner with respect to calibration and assessment. Our predictor never became accurate enough to make it worth while to set up a way of testing it on real flights in 2013. In the end we had a lot of fun learning about scraping, working with a real world problem and letting our imagination takeoff ;) .</p>
       </section>
     </div>
 
