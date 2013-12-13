@@ -1,44 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Predicting and Visualizing Flight Delays by nyassin</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Predicting and Visualizing Flight Delays : Final Project for Computer Science 109: Data Science" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Predicting and Visualizing Flight Delays</title>
   </head>
+
   <body>
 
-      <header>
-        <h1>Predicting and Visualizing Flight Delays</h1>
-        <p>Final Project for Computer Science 109: Data Science</p>
-      </header>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/nyassin/CS109_Visualization">View on GitHub</a>
 
-      <div id="banner">
-        <span id="logo"></span>
+          <h1 id="project_title">Predicting and Visualizing Flight Delays</h1>
+          <h2 id="project_tagline">Final Project for Computer Science 109: Data Science</h2>
 
-        <a href="https://github.com/nyassin/CS109_Visualization" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/nyassin/CS109_Visualization/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/nyassin/CS109_Visualization/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/nyassin/CS109_Visualization/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/nyassin/CS109_Visualization/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <p>Hello and welcome to our CS109 Process book!</p>
 
 <p>The goal of our project was to explore the world of flight delays and look at how weather factors in. Our original intention was to predict delays based upon weather at the origin airport. We gathered the flight data and matched it to scraped weather data at the origin airport. We then produced both significant visualizations of the the interplay of weather and flight delays and experimented with multiple regression and classification models.  The conclusion was that it is very difficult to predict flight delays. Airports now handle medium to bad weather well and a significant number of delays are due to chance or hard to follow network effects.
@@ -59,7 +51,7 @@ Due to the quirky format that the NOAA uses for its data files, the process of c
 
 <p>We obtained flight data from the Bureau of Transportation Statistics’ (BTS) <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&amp;DB_Short_Name=On-Time">On-Time Performance</a> dataset, which has extremely detailed information about the delays, causes of delay, route characteristics, etc. of every flight in every airport in the US. 
 For our purposes, this was an overwhelming amount of data, so we chose to focus on the top 20 busiest airports in the US. Given the spoke-and-hub strategy of most airlines, in which flights are routed through connecting hubs, these 20 airports represent a majority of the traffic in the US already, and are presumably also centers of delays, since one delay at a hub can spill over to all connecting flights.
-A complete list of the fields that we chose to download is listed at the bottom of the ipython notebook--these included causes of delay classified by the BTS here, airtime, day of the week, etc.</p>
+A complete list of the fields that we chose to download is listed at the bottom of the ipython notebook--these included causes of delay classified by the BTS <a href="http://www.rita.dot.gov/bts/help/aviation/html/understanding.html">here</a>, airtime, day of the week, etc.</p>
 
 <p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/flight_scraping.ipynb?create=1">Flight scraping code</a></p>
 
@@ -75,7 +67,9 @@ A complete list of the fields that we chose to download is listed at the bottom 
 <h2>
 <a name="sizing-up-the-data" class="anchor" href="#sizing-up-the-data"><span class="octicon octicon-link"></span></a>Sizing Up The Data</h2>
 
-<p>WAITING ON IT</p>
+<p>This is an example of an early notebook in which we opened and explored the flight and weather data for the first time. It was in this notebook that we decided to limit our discussion to only departures from the top 20 busiest airports in the United States. We also determined that we wanted to limit our discussion to weather-related delays in order to get a more predictable subset of flight delays. We followed the FAA threshold of 15 minutes before declaring a flight delayed and decided to count canceled flights as delayed. In this notebook we plotted weather patterns of canceled flights and determined that they were on average due to more extreme weather which fit well with the weather related delays we intended to predict. </p>
+
+<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/Sizing%20up%20the%20data.ipynb?create=1">Sizing up the data notebook</a></p>
 
 <h2>
 <a name="visualizations" class="anchor" href="#visualizations"><span class="octicon octicon-link"></span></a>Visualizations</h2>
@@ -92,10 +86,18 @@ A complete list of the fields that we chose to download is listed at the bottom 
 <h2>
 <a name="linear-regression" class="anchor" href="#linear-regression"><span class="octicon octicon-link"></span></a>Linear Regression</h2>
 
-<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/Linear%20Regression%20and%20Exploration.ipynb?create=1">Linear Regression </a></p>
+<p>Our initial explorations also involved trying to find simple correlations between predictors and minutes of delay time, trying to get a sense of which factors were most important in predicting delay. Unfortunately, these were largely unsuccessful, in particular because extreme values of weather and other predictors led to a mix of delayed and on-time flights. The large volume of flights that are slightly delayed was problematic. These short delays could simply be the result of noise from minor efficiencies like slow boarding/cleaning/refueling, but they played a big role in making prediction difficult.
+This revealed to us one of the fundamental problems of trying to predict delays: most delays, particularly shorter delays, are the result of rather unpredictable, noisy factors. For instance, specific mechanical failures are hard to predict : if they were frequent for certain aircraft, these planes probably would have been taken off the market. Our most detailed features concerned weather, but many delays are not weather-related.
+Indeed, weather delays accounted for only a small portion of delays, the largest cause being late incoming aircraft (which is a product of delays at the previous airport from which the aircraft was arriving).  Although these types of failures could be predicted in aggregate, predicting them for any single flight is a difficult task, particularly given the interconnected nature of the national flight network.</p>
+
+<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/Linear%20Regression%20and%20Exploration.ipynb?create=1">Linear Regression Code</a></p>
 
 <h2>
-<a name="logistical-regression" class="anchor" href="#logistical-regression"><span class="octicon octicon-link"></span></a>Logistical Regression</h2>
+<a name="logistic-regression" class="anchor" href="#logistic-regression"><span class="octicon octicon-link"></span></a>Logistic Regression</h2>
+
+<p>Based on our experience in exploration, we decided to model delays as a binary outcome (delayed or not delayed) to eliminate noise from minor delays. We started by trying to run and optimize a logistic regression model, with somewhat limited success. Accuracy was high, but only because most flights are not delayed; simply predicting that every flight would be on-time is a relatively accurate method too. Our model struggled in particular to classify flights that were actually delayed; it tended to predict too few delays overall.
+This is likely due in part to the massive number of categorical predictors we have. While dummy variables can be effective in limited use, they are not particularly informative since they can only assume one of two values. It might have been better to do separate regressions for each airline/airport combination, but this would lose the predictive value that each airline and airport contributes to prediction.
+In an attempt to more accurately sample from the parameter space, we also constructed a markov chain monte carlo (MCMC) based on the Metropolis-Hastings algorithms to estimate the parameters of the logistic regression. Unfortunately, we didn’t have much time to debug and optimize this code, and when running test data that should have fit quite well, our chain failed to converge in a reasonable number of attempts.</p>
 
 <p><a>Logistic Regression</a></p>
 
@@ -107,12 +109,17 @@ A complete list of the fields that we chose to download is listed at the bottom 
 <h2>
 <a name="randomforest" class="anchor" href="#randomforest"><span class="octicon octicon-link"></span></a>RandomForest</h2>
       </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/nyassin">nyassin</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Predicting and Visualizing Flight Delays maintained by <a href="https://github.com/nyassin">nyassin</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
     
+
   </body>
 </html>
