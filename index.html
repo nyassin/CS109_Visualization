@@ -31,7 +31,10 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p>Hello and welcome to our CS109 Process book!</p>
+        <h2>
+<a name="process-book" class="anchor" href="#process-book"><span class="octicon octicon-link"></span></a>Process Book</h2>
+
+<p>Hello and welcome to our CS109 Process book!</p>
 
 <p>The goal of our project was to explore the world of flight delays and look at how weather factors in. Our original intention was to predict delays based upon weather at the origin airport. We gathered the flight data and matched it to scraped weather data at the origin airport. We then produced both significant visualizations of the the interplay of weather and flight delays and experimented with multiple regression and classification models.  The conclusion was that it is very difficult to predict flight delays. Airports now handle medium to bad weather well and a significant number of delays are due to chance or hard to follow network effects.
 We hope you enjoy browsing our project.</p>
@@ -108,6 +111,11 @@ In an attempt to more accurately sample from the parameter space, we also constr
 
 <h2>
 <a name="randomforest" class="anchor" href="#randomforest"><span class="octicon octicon-link"></span></a>RandomForest</h2>
+
+<p>This was our most successful classifier. We selected Random Forests in an effort to explore a methodology that was not covered in the problem sets of the course. In our efforts we found <a href="http://blog.yhathq.com/posts/random-forests-in-python.html">this blog</a> very helpful. We went through many iterations of feature lists and discovered new inputs that we decided to go back and scrape to add to our flight dataset. It is misleading to look at the score in predicting flight delays because delays are rare events. We used the metrics of precision and recall to examine our ability to distinguish the delayed flights from normal flights. 
+We had limited success in calibrating the model and producing a successful classifier. This is documented in our ipython notebook linked above.</p>
+
+<p><a href="http://nbviewer.ipython.org/github/nyassin/CS109_Visualization/blob/gh-pages/modeling/RandomForest.ipynb?create=1">Random Forest Book</a></p>
       </section>
     </div>
 
